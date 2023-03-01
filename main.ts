@@ -1,6 +1,10 @@
 namespace SpriteKind {
     export const Seek = SpriteKind.create()
 }
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, location) {
+    tiles.setWallAt(tiles.getTileLocation(144, 14), true)
+    tiles.setTileAt(location, assets.tile`myTile1`)
+})
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (mySprite.vy == 0) {
         mySprite.setVelocity(0, -125)
@@ -132,7 +136,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Seek, function (sprite, otherSpr
         8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
         `)
     tiles.setCurrentTilemap(tilemap`level2`)
-    scene.cameraShake(2, 1000)
     music.stopAllSounds()
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
